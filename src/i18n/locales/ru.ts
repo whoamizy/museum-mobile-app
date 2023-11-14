@@ -1,3 +1,8 @@
 export const ru = {
-  hello: 'привет',
+  tabbar: {
+    home: 'Главная',
+    tickets: 'Мои билеты',
+    collection: 'Коллекция',
+    profile: 'Профиль',
+  },
 };
