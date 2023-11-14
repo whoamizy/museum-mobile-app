@@ -7,7 +7,7 @@
 
 import React, {useCallback, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import {PersistQueryClientProvider} from '@tanstack/react-query-persist-client';
 import {clientPersister, queryClient} from './utils';
 import SplashScreen from 'react-native-splash-screen';
@@ -40,9 +40,11 @@ function App(): JSX.Element {
             persister: clientPersister,
           }}>
           <RawIntlProvider value={intl}>
-            <View>
-              <Text>Hello</Text>
-            </View>
+            <SafeAreaView>
+              <View>
+                <Text>Hello</Text>
+              </View>
+            </SafeAreaView>
           </RawIntlProvider>
         </PersistQueryClientProvider>
         <Toast />
