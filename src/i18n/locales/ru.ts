@@ -9,6 +9,8 @@ export const ru = {
     profile: 'Профиль',
   },
   errors: {
+    incorrectUsername: 'Неккоректное имя',
+    incorrectEmailOrPassword: 'Неккоректный email и/или пароль',
     invalidEmailOrPassword: 'Неверный email и/или пароль',
     required: 'Обязательное поле',
     invalidEmail: 'Некорректный e-mail',
@@ -19,6 +21,8 @@ export const ru = {
       'Пароль должен содержать максимум {value, plural, one {{value} символ} few {{value} символа} other {{value} символов}}',
   },
   auth: {
+    username: 'Ваше имя',
+    usernamePlaceholder: 'Введите имя',
     email: 'E-mail',
     emailPlaceholder: 'Введите e-mail',
     password: 'Пароль',
@@ -27,6 +31,11 @@ export const ru = {
       button: 'Войти',
       question: 'Еще не зарегистрированы?',
       call_to_action: 'Зарегистрируйтесь прямо сейчас',
+    },
+    register: {
+      button: 'Зарегистрироваться',
+      question: 'Уже зарегистрированы?',
+      call_to_action: 'Войдите в свой аккаунт',
     },
   },
 }
