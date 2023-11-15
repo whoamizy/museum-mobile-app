@@ -9,3 +9,9 @@ declare module 'styled-components' {
 declare module 'styled-components/native' {
   export interface DefaultTheme extends CustomTheme {}
 }
+
+declare module 'axios' {
+  export interface AxiosRequestConfig extends AxiosConfig {
+    shouldShowToast?: boolean
+  }
+}

@@ -1,15 +1,16 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { ROUTES } from './routes'
-import { TabBar } from './tab-bar'
+import { LoginScreen } from 'src/screens/auth'
+
+import { AUTH_ROUTES } from './routes'
 
 const Stack = createNativeStackNavigator()
 
 export const AuthNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ header: () => null }}>
-      <Stack.Screen name={ROUTES.TAB} component={TabBar} />
+      <Stack.Screen name={AUTH_ROUTES.LOGIN} component={LoginScreen} />
     </Stack.Navigator>
   )
 }

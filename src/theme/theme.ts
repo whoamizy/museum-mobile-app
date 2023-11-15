@@ -11,4 +11,5 @@ export const theme = {
     active: colors.red_dark,
     inactive: colors.black,
   },
+  background: colors.white,
 }

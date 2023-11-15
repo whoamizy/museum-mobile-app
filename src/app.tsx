@@ -1,3 +1,9 @@
+import '@formatjs/intl-getcanonicallocales/polyfill'
+import '@formatjs/intl-locale/polyfill'
+import '@formatjs/intl-pluralrules/polyfill'
+import '@formatjs/intl-pluralrules/locale-data/ru'
+import '@formatjs/intl-pluralrules'
+
 import React, { useCallback, useEffect, useState } from 'react'
 import { RawIntlProvider } from 'react-intl'
 import { StyleSheet } from 'react-native'
