@@ -23,6 +23,10 @@ export const ru = {
     emailPlaceholder: 'Введите e-mail',
     password: 'Пароль',
     passwordPlaceholder: 'Введите пароль',
-    login: 'Войти',
+    login: {
+      button: 'Войти',
+      question: 'Еще не зарегистрированы?',
+      call_to_action: 'Зарегистрируйтесь прямо сейчас',
+    },
   },
 }
