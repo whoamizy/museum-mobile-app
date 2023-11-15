@@ -1,4 +1,7 @@
 export const ru = {
+  general: {
+    error: 'Что-то пошло не так!',
+  },
   tabbar: {
     home: 'Главная',
     tickets: 'Мои билеты',
@@ -14,5 +17,12 @@ export const ru = {
       'Пароль должен содержать минимум {value, plural, one {{value} символ} few {{value} символа} other {{value} символов}}',
     maxPasswordLength:
       'Пароль должен содержать максимум {value, plural, one {{value} символ} few {{value} символа} other {{value} символов}}',
+  },
+  auth: {
+    email: 'E-mail',
+    emailPlaceholder: 'Введите e-mail',
+    password: 'Пароль',
+    passwordPlaceholder: 'Введите пароль',
+    login: 'Войти',
   },
 }
