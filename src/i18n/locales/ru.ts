@@ -5,4 +5,4 @@ export const ru = {
     collection: 'Коллекция',
     profile: 'Профиль',
   },
-};
+}

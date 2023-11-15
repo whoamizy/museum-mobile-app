@@ -1,14 +1,14 @@
-import {createIntl, createIntlCache} from 'react-intl';
-import isString from 'lodash/isString';
+import { createIntl, createIntlCache } from 'react-intl'
+import isString from 'lodash/isString'
 
-import {ru} from './locales/ru';
+import { ru } from './locales/ru'
 
-const cache = createIntlCache();
+const cache = createIntlCache()
 
-const locale = 'ru';
+const locale = 'ru'
 
 interface NestedMessages {
-  [key: string]: string | NestedMessages;
+  [key: string]: string | NestedMessages
 }
 
 const flattenMessages = (
@@ -17,23 +17,23 @@ const flattenMessages = (
 ): Record<string, string> =>
   Object.keys(nestedMessages).reduce(
     (acc: Record<string, string>, key: string): Record<string, string> => {
-      const value = nestedMessages[`${key}`];
-      const prefixedKey = prefix ? `${prefix}.${key}` : key;
+      const value = nestedMessages[`${key}`]
+      const prefixedKey = prefix ? `${prefix}.${key}` : key
 
       if (isString(value)) {
-        acc[`${prefixedKey}`] = value;
+        acc[`${prefixedKey}`] = value
       } else {
-        Object.assign(acc, flattenMessages(value, prefixedKey));
+        Object.assign(acc, flattenMessages(value, prefixedKey))
       }
 
-      return acc;
+      return acc
     },
     {},
-  );
+  )
 
-const messages: {[key: string]: Record<string, string>} = {
+const messages: { [key: string]: Record<string, string> } = {
   ru: flattenMessages(ru),
-};
+}
 
 export const intl = createIntl(
   {
@@ -41,7 +41,7 @@ export const intl = createIntl(
     messages: messages[`${locale}`],
   },
   cache,
-);
+)
 
 export const t = (id: string, values = {}): string =>
-  intl.formatMessage({id}, values);
+  intl.formatMessage({ id }, values)

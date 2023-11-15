@@ -1,31 +1,32 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { clientPersister, queryClient } from './utils';
-import SplashScreen from 'react-native-splash-screen';
-import Toast from 'react-native-toast-message';
-import { RawIntlProvider } from 'react-intl';
-import { intl } from './i18n';
-import { ThemeProvider } from 'styled-components/native';
-import { theme } from './theme';
-import { RootNavigation } from './navigation/root';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useCallback, useEffect, useState } from 'react'
+import { RawIntlProvider } from 'react-intl'
+import { StyleSheet } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import SplashScreen from 'react-native-splash-screen'
+import Toast from 'react-native-toast-message'
+import { NavigationContainer } from '@react-navigation/native'
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
+import { ThemeProvider } from 'styled-components/native'
+
+import { intl } from './i18n'
+import { RootNavigation } from './navigation/root'
+import { theme } from './theme'
+import { clientPersister, queryClient } from './utils'
 
 function App(): JSX.Element {
-  const [persistReady, setPersistReady] = useState(false);
-  const [navigationReady, setNavigationReady] = useState(false);
+  const [persistReady, setPersistReady] = useState(false)
+  const [navigationReady, setNavigationReady] = useState(false)
 
   const isAppReady = useCallback(() => {
     if (persistReady && navigationReady) {
-      SplashScreen.hide();
+      SplashScreen.hide()
     }
-  }, [persistReady, navigationReady]);
+  }, [persistReady, navigationReady])
 
   useEffect(() => {
-    isAppReady();
-  }, [isAppReady]);
+    isAppReady()
+  }, [isAppReady])
 
   return (
     <SafeAreaProvider>
@@ -37,8 +38,7 @@ function App(): JSX.Element {
             persistOptions={{
               persister: clientPersister,
             }}>
-            <NavigationContainer
-              onReady={() => setNavigationReady(true)}>
+            <NavigationContainer onReady={() => setNavigationReady(true)}>
               <RawIntlProvider value={intl}>
                 <RootNavigation />
               </RawIntlProvider>
@@ -48,7 +48,7 @@ function App(): JSX.Element {
         </GestureHandlerRootView>
       </ThemeProvider>
     </SafeAreaProvider>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default App;
+export default App

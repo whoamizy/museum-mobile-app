@@ -1,7 +1,8 @@
-import { t } from "src/i18n";
-import { HomeIcon } from "src/icons";
-import { HomeScreen } from "src/screens";
-import { TabBarRoute } from "./types";
+import { t } from 'src/i18n'
+import { HomeIcon } from 'src/icons'
+import { HomeScreen } from 'src/screens'
+
+import { type TabBarRoute } from './types'
 
 export enum ROUTES {
   TAB = 'TAB',

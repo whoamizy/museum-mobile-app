@@ -1,1 +1,1 @@
-export * from './persist';
+export * from './persist'

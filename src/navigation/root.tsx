@@ -1,16 +1,16 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { storage } from 'src/utils';
+import { storage } from 'src/utils'
 
-import { AuthNavigator } from './auth';
-import { MainNavigator } from './main';
-import { ROUTES } from './routes';
-import { PersistData } from '../enums';
+import { PersistData } from '../enums'
+import { AuthNavigator } from './auth'
+import { MainNavigator } from './main'
+import { ROUTES } from './routes'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
-const hasToken = storage.contains(PersistData.TOKEN);
-const initialRoute = hasToken ? ROUTES.MAIN_NAVIGATOR : ROUTES.AUTH_NAVIGATOR;
+const hasToken = storage.contains(PersistData.TOKEN)
+const initialRoute = hasToken ? ROUTES.MAIN_NAVIGATOR : ROUTES.AUTH_NAVIGATOR
 
 export const RootNavigation = () => {
   return (
@@ -20,5 +20,5 @@ export const RootNavigation = () => {
       <Stack.Screen name={ROUTES.MAIN_NAVIGATOR} component={MainNavigator} />
       <Stack.Screen name={ROUTES.AUTH_NAVIGATOR} component={AuthNavigator} />
     </Stack.Navigator>
-  );
-};
+  )
+}

@@ -1,17 +1,11 @@
-import Svg, { SvgProps, Path } from "react-native-svg"
-import { useTheme } from "styled-components/native"
+import Svg, { Path, type SvgProps } from 'react-native-svg'
+import { useTheme } from 'styled-components/native'
 
 export const HomeIcon = (props: SvgProps) => {
   const { icons } = useTheme()
 
   return (
-    <Svg
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      fill="none"
-      {...props}
-    >
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
       <Path
         stroke={props.color ?? icons.primary}
         strokeWidth={1.5}

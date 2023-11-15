@@ -1,8 +1,8 @@
-import { ParamListBase } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { type SvgProps } from 'react-native-svg'
+import { type ParamListBase } from '@react-navigation/native'
+import { type NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-import { APP_ROUTES, ROUTES } from './routes'
-import { SvgProps } from 'react-native-svg'
+import { type APP_ROUTES, type ROUTES } from './routes'
 
 export type Navigation = NativeStackNavigationProp<ParamListBase, ROUTES>
 
