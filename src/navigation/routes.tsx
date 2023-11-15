@@ -18,6 +18,11 @@ export enum APP_ROUTES {
   PROFILE = 'PROFILE',
 }
 
+export enum AUTH_ROUTES {
+  LOGIN = 'LOGIN',
+  REGISTER = 'REGISTER',
+}
+
 export const TabRoutes: TabBarRoute[] = [
   {
     name: APP_ROUTES.HOME,
