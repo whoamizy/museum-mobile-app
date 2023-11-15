@@ -1,6 +1,7 @@
 import { type FormikProps } from 'formik'
 
 import { Button, InputText } from 'src/components'
+import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
 import { type LoginPayload } from 'src/types'
 
@@ -15,6 +16,8 @@ export const LoginView = ({
   isSubmitting,
   isValid,
 }: FormikProps<LoginPayload>) => {
+  const paddingBottom = usePaddingBottom()
+
   const { email, password } = values
   const { email: emailError, password: passwordError } = errors
 
@@ -42,6 +45,7 @@ export const LoginView = ({
         />
       </Inputs>
       <Button
+        style={{ paddingBottom }}
         title={t('auth.login')}
         isDisabled={isDisabled}
         loading={isSubmitting}

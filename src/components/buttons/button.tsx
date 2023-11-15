@@ -1,14 +1,14 @@
-import { type TouchableOpacityProps } from 'react-native'
+import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Loader } from '../loader'
 
-const Wrapper = styled.TouchableOpacity<{ isDisabled: boolean }>`
+const Wrapper = styled.View<{ isDisabled: boolean }>`
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme, disabled }) =>
-    disabled ? theme.button.bg.disabled : theme.button.bg.active};
+  background-color: ${({ theme, isDisabled }) =>
+    isDisabled ? theme.button.bg.disabled : theme.button.bg.active};
   border-radius: 12px;
   height: 40px;
 `
@@ -28,12 +28,14 @@ interface Props extends TouchableOpacityProps {
 
 export const Button = ({ title, isDisabled, loading, ...props }: Props) => {
   return (
-    <Wrapper {...props} disabled={isDisabled} isDisabled={!!isDisabled}>
-      {loading ? (
-        <Loader size="small" />
-      ) : (
-        <Title isDisabled={!!isDisabled}>{title}</Title>
-      )}
-    </Wrapper>
+    <TouchableOpacity {...props} disabled={isDisabled}>
+      <Wrapper isDisabled={!!isDisabled}>
+        {loading ? (
+          <Loader size="small" />
+        ) : (
+          <Title isDisabled={!!isDisabled}>{title}</Title>
+        )}
+      </Wrapper>
+    </TouchableOpacity>
   )
 }
