@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { css } from 'styled-components/native'
 
@@ -11,7 +11,6 @@ import { Dismissable } from './dismissable'
 interface Props {
   hideBack?: boolean
   colorArrow?: string
-  backgroundColor?: string
   onBack?: () => void
   title?: string
   Logo?: ReactNode
@@ -24,13 +23,12 @@ const absoluteStyle = css`
   position: absolute;
   bottom: 8px;
 `
-const Container = styled.SafeAreaView<{ backgroundColor?: string }>`
+const Container = styled.SafeAreaView`
   flex-direction: row;
   align-items: flex-start;
   padding-top: ${headerPaddingTop}px;
   justify-content: center;
-  background-color: ${({ theme, backgroundColor }) =>
-    backgroundColor ?? theme.background};
+  background-color: ${({ theme }) => theme.background};
 `
 const LogoBlock = styled.View`
   margin-top: 30px;
@@ -74,7 +72,6 @@ export const Header = ({
   colorArrow,
   StartComponent,
   EndComponent,
-  backgroundColor,
   hideBack,
   Logo,
   ...props
@@ -83,10 +80,7 @@ export const Header = ({
 
   return (
     <Dismissable>
-      <Container
-        style={styles.border_shadow}
-        backgroundColor={backgroundColor}
-        {...props}>
+      <Container {...props}>
         <LeftBlock>
           {shouldShowBack ? (
             <ArrowWrapper onPress={onBack} activeOpacity={0.5}>
@@ -107,16 +101,3 @@ export const Header = ({
     </Dismissable>
   )
 }
-
-const styles = StyleSheet.create({
-  border_shadow: {
-    borderTopWidth: 0,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.03,
-    shadowRadius: 11,
-    elevation: 11,
-  },
-})

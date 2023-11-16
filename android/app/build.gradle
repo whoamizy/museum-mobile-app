@@ -67,6 +67,11 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US. Note that
  * this variant is about 6MiB larger per architecture than default.
  */
+def getEnv(key) {
+    def val = project.env.get(key)
+    return val
+}
+
 def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
@@ -79,8 +84,8 @@ android {
         applicationId "com.museum"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode getEnv("ANDROID_VERSION_CODE").toInteger()
+        versionName getEnv("ANDROID_VERSION_NAME")
     }
     signingConfigs {
         debug {

@@ -45,4 +45,5 @@ export const theme = {
       disabled: colors.grey_light,
     },
   },
+  separator: colors.red_light,
 }

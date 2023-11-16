@@ -1,4 +1,5 @@
 import { Dimensions, Platform, StatusBar } from 'react-native'
+import Config from 'react-native-config'
 
 export const isIOS = Platform.OS === 'ios'
 
@@ -12,3 +13,9 @@ export const headerPaddingTop = Platform.select({
   ios: 8,
   default: 0,
 })
+
+export const APP_VERSION = isIOS
+  ? Config.MARKETING_VERSION
+  : Config.ANDROID_VERSION_NAME
+
+export const MUSEUM_LINK = 'https://rusmuseum.ru/'
