@@ -1,6 +1,8 @@
 import { type SvgProps } from 'react-native-svg'
-import { type ParamListBase } from '@react-navigation/native'
+import { type ParamListBase, type RouteProp } from '@react-navigation/native'
 import { type NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+import { type ExhibitionParams } from 'src/types'
 
 import { type APP_ROUTES, type ROUTES } from './routes'
 
@@ -14,3 +16,8 @@ export interface TabBarRoute {
   Icon: (props: SvgProps) => JSX.Element
   title: string
 }
+
+export type ExhibitionProp = RouteProp<
+  { Exhibition: ExhibitionParams },
+  'Exhibition'
+>

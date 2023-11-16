@@ -6,3 +6,7 @@ export interface Exhibition {
   address: string
   price: number
 }
+
+export interface ExhibitionParams {
+  id: string
+}
