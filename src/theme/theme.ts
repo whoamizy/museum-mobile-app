@@ -15,6 +15,7 @@ export const theme = {
   text: {
     primary: colors.black,
     secondary: colors.white,
+    third: colors.grey_medium,
     error: colors.red_dark,
     accent: colors.red_dark,
     accent_light: colors.red_medium,

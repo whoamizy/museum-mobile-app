@@ -54,5 +54,11 @@ export const ru = {
   exhibitions: {
     title: 'Выставки',
     emptyList: 'Пока что нет активных выставок',
+    item: {
+      title: 'Выставка',
+      description: 'Описание',
+      price: 'Цена билета: {value} ₽',
+      getTicket: 'Приобрести билет',
+    },
   },
 }

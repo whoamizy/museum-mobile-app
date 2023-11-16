@@ -47,7 +47,7 @@ export const ExhibitionsCard = ({ item }: Props) => {
   const imageUrl = `${Config.BASE_URL}${Path.GET_IMAGE}${item.images[0]}`
 
   const navigateToTicketsHandler = () => {
-    navigate(ROUTES.EXHIBITION, { item })
+    navigate(ROUTES.EXHIBITION, { id: item._id })
   }
 
   return (
