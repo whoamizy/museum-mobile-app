@@ -56,4 +56,29 @@ export const theme = {
     cancel: colors.black,
   },
   overlay: colors.grey_transparent,
+  chips: {
+    time: {
+      bg: {
+        active: colors.red_dark,
+        inactive: colors.grey_light,
+      },
+      text: {
+        active: colors.white,
+        inactive: colors.red_dark,
+      },
+    },
+  },
+  calendar: {
+    week_day: colors.red_dark,
+    day: {
+      bg: {
+        active: colors.red_dark,
+        inactive: colors.grey_light,
+      },
+      text: {
+        active: colors.white,
+        inactive: colors.red_dark,
+      },
+    },
+  },
 }

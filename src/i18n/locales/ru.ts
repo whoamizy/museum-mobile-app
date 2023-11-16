@@ -61,4 +61,33 @@ export const ru = {
       getTicket: 'Приобрести билет',
     },
   },
+  tickets: {
+    create: {
+      success: 'Билет успешно приобритен',
+      error: 'Не удалось приобрести билет',
+    },
+  },
+  months: {
+    january: 'Январь',
+    february: 'Февраль',
+    march: 'Март',
+    april: 'Апрель',
+    may: 'Май',
+    june: 'Июнь',
+    july: 'Июль',
+    august: 'Август',
+    september: 'Сентябрь',
+    october: 'Октябрь',
+    november: 'Ноябрь',
+    december: 'Декабрь',
+  },
+  week: {
+    mon: 'пн',
+    tues: 'вт',
+    wed: 'ср',
+    thurs: 'чт',
+    fri: 'пт',
+    sat: 'сб',
+    sun: 'вс',
+  },
 }

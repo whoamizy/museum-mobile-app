@@ -10,6 +10,8 @@ import {
   Text,
   TextInput,
 } from 'react-native'
+import ru from 'date-fns/locale/ru'
+import setDateFnsOptions from 'date-fns/setDefaultOptions'
 
 import { name as appName } from './app.json'
 import App from './src/app'
@@ -34,5 +36,7 @@ ScrollView.defaultProps.overScrollMode = 'never'
 ScrollView.defaultProps.keyboardShouldPersistTaps = 'handled'
 FlatList.defaultProps = FlatList.defaultProps || {}
 FlatList.defaultProps.keyExtractor = (item) => item._id
+
+setDateFnsOptions({ locale: ru })
 
 AppRegistry.registerComponent(appName, () => App)

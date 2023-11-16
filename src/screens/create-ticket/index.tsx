@@ -1,16 +1,11 @@
-import { Text, View } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { TicketsProvider } from 'src/context'
 
-import { type ExhibitionProp } from 'src/navigation/types'
+import { CreateTicketContent } from './content'
 
 export const CreateTicketScreen = () => {
-  const {
-    params: { id },
-  } = useRoute<ExhibitionProp>()
-
   return (
-    <View>
-      <Text>CreateTicketScreen for {id}</Text>
-    </View>
+    <TicketsProvider selected={new Date().toISOString()}>
+      <CreateTicketContent />
+    </TicketsProvider>
   )
 }

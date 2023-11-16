@@ -5,4 +5,5 @@ export enum Path {
   NEWS = '/news',
   GET_IMAGE = '/get/images/',
   EXHIBITIONS = '/exhibitions',
+  TICKETS = '/tickets',
 }
