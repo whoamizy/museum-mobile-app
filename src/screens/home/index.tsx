@@ -1,12 +1,25 @@
+import { useLayoutEffect } from 'react'
 import { Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+
+import { Wrapper } from 'src/components'
+import { useNavigation } from 'src/navigation/hooks'
+
+import { Header } from './header'
 
 export const HomeScreen = () => {
+  const { setOptions } = useNavigation()
+
+  useLayoutEffect(() => {
+    setOptions({
+      header: Header,
+    })
+  }, [setOptions])
+
   return (
-    <SafeAreaView edges={['top']}>
+    <Wrapper>
       <View>
         <Text>HomeScreen</Text>
       </View>
-    </SafeAreaView>
+    </Wrapper>
   )
 }

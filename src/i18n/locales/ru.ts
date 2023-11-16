@@ -2,6 +2,7 @@ export const ru = {
   general: {
     error: 'Что-то пошло не так!',
     exit: 'Выйти',
+    hello: 'Здравствуйте, {name}!',
   },
   tabbar: {
     home: 'Главная',
