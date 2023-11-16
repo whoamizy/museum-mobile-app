@@ -41,7 +41,7 @@ export const Day = ({ date, day, selected, setSelected }: Props) => {
   const isCurrent = isToday(Date.parse(date))
   const isCurrentBefore = isBefore(new Date(date), currentDate)
   const dayOfWeek = getDay(Date.parse(date))
-  const isDisabled = (!isCurrent && isCurrentBefore) || dayOfWeek === 2
+  const isDisabled = isCurrent || isCurrentBefore || dayOfWeek === 2
 
   const handlePress = useCallback(() => {
     setSelected?.(date)

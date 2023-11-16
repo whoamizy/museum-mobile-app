@@ -63,6 +63,7 @@ export const ru = {
   },
   tickets: {
     create: {
+      label: 'Заказать билет',
       success: 'Билет успешно приобритен',
       error: 'Не удалось приобрести билет',
     },

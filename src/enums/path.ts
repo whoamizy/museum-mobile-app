@@ -6,4 +6,5 @@ export enum Path {
   GET_IMAGE = '/get/images/',
   EXHIBITIONS = '/exhibitions',
   TICKETS = '/tickets',
+  FREE_TIMES = '/free-times',
 }

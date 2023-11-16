@@ -7,12 +7,26 @@ import {
   set,
   subMonths,
 } from 'date-fns'
+import parseISO from 'date-fns/parseISO'
 
 import { t } from 'src/i18n'
 
 const currentDate = new Date()
 
 export const timezoneOffset = currentDate.getTimezoneOffset() / 60
+
+export const prepareWithoutTimeZone = (date: string) => {
+  return set(parseISO(date), {
+    hours: 0 - timezoneOffset,
+    minutes: 0,
+    seconds: 0,
+    milliseconds: 0,
+  })
+}
+
+export const setTimeWithoutTimeZone = (date: string) => {
+  return format(prepareWithoutTimeZone(date), 'HH:mm')
+}
 
 export const createMonth = (initialStart = new Date()) => {
   const prevMonth = subMonths(initialStart, 1)

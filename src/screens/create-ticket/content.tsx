@@ -1,12 +1,14 @@
 import { useCallback } from 'react'
 import Toast from 'react-native-toast-message'
 import { useRoute } from '@react-navigation/native'
+import format from 'date-fns/format'
 import { Formik } from 'formik'
 
 import { useCreateTicketMutation } from 'src/api'
+import { useTickets, useUser } from 'src/context'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
-import { APP_ROUTES } from 'src/navigation/routes'
+import { ROUTES } from 'src/navigation/routes'
 import { type ExhibitionProp } from 'src/navigation/types'
 import { type CreateTicketPayload, type FormikSubmit } from 'src/types'
 
@@ -18,9 +20,12 @@ export const CreateTicketContent = () => {
   } = useRoute<ExhibitionProp>()
   const { mutateAsync: create } = useCreateTicketMutation()
   const { replace } = useNavigation()
+  const { selected } = useTickets()
+  const { user } = useUser()
 
   const initialValues: CreateTicketPayload = {
-    date: '',
+    user: user?._id,
+    date: format(new Date(selected), 'yyy-MM-dd'),
     time: '',
     exhibition: id,
   }
@@ -30,7 +35,7 @@ export const CreateTicketContent = () => {
       create(values, {
         onSuccess: () => {
           Toast.show({ type: 'success', text1: t('tickets.create.success') })
-          replace(APP_ROUTES.HOME)
+          replace(ROUTES.TAB)
         },
         onSettled: () => {
           helpers.setSubmitting(false)

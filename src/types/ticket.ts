@@ -10,6 +10,7 @@ export interface Ticket {
 }
 
 export interface CreateTicketPayload {
+  user?: string
   date: string
   time: string
   exhibition: string
