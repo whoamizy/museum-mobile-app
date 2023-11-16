@@ -46,4 +46,11 @@ export const theme = {
     },
   },
   separator: colors.red_light,
+  pop_up: {
+    bg: colors.white,
+    title: colors.black,
+    accept_red: colors.red_dark,
+    cancel: colors.black,
+  },
+  overlay: colors.grey_transparent,
 }

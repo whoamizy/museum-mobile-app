@@ -7,4 +7,5 @@ export const colors = {
   red_extra_light: '#ecbbb2',
   grey_light: '#F3EFEF',
   grey_medium: '#BABABA',
+  grey_transparent: '#241F2866',
 }

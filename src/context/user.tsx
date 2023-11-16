@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import { useMMKVString } from 'react-native-mmkv'
 import SplashScreen from 'react-native-splash-screen'
-import { useQueryClient } from '@tanstack/react-query'
+import { useQueryClient, type UseQueryResult } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 import { noop } from 'lodash'
 
@@ -17,11 +17,13 @@ import { storage } from 'src/utils'
 
 interface Values {
   user: User | null
+  userQuery: UseQueryResult<User, unknown> | null
   logout(): void
 }
 
 const defaultValue: Values = {
   user: null,
+  userQuery: null,
   logout: noop,
 }
 
@@ -59,29 +61,26 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     return storage.delete(PersistData.TOKEN)
   }, [queryClient])
 
-  const { data, error, isError } = useGetMe({
-    queryKey: ['users/me'],
+  const userQuery = useGetMe({
     enabled: !!storageToken,
+    onError: (err) => {
+      const error = err as AxiosError
+
+      if (error?.response?.status === 401) {
+        logout()
+      }
+    },
+    onSettled: () => SplashScreen.hide(),
+    staleTime: 0,
   })
-
-  if (isError) {
-    const err = error as AxiosError
-
-    if (err?.response?.status === 401) {
-      logout()
-    }
-  }
-
-  if (data) {
-    SplashScreen.hide()
-  }
 
   const contextVal: Values = useMemo(
     () => ({
-      user: data ?? null,
+      user: userQuery?.data ?? null,
+      userQuery,
       logout,
     }),
-    [data, logout],
+    [logout, userQuery],
   )
 
   return <Context.Provider value={contextVal}>{children}</Context.Provider>

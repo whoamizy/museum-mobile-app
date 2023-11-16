@@ -16,7 +16,7 @@ export const Inputs = styled.View`
 
 export const InfoContent = styled.View`
   align-items: center;
-  margin-vertical: 20px;
+  margin-bottom: 20px;
 `
 
 export const Logo = styled.Image`

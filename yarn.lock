@@ -2001,39 +2001,39 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@tanstack/query-core@5.8.3":
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.8.3.tgz#7c6d62721518223e8b27f1a0b5e9bd4e3bb7ecd8"
-  integrity sha512-SWFMFtcHfttLYif6pevnnMYnBvxKf3C+MHMH7bevyYfpXpTMsLB9O6nNGBdWSoPwnZRXFNyNeVZOw25Wmdasow==
+"@tanstack/query-core@4.32.6":
+  version "4.32.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.32.6.tgz#cf7df91ab1542e67a82624fefb12a55f580b4c01"
+  integrity sha512-YVB+mVWENQwPyv+40qO7flMgKZ0uI41Ph7qXC2Zf1ft5AIGfnXnMZyifB2ghhZ27u+5wm5mlzO4Y6lwwadzxCA==
 
-"@tanstack/query-persist-client-core@5.8.3":
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-persist-client-core/-/query-persist-client-core-5.8.3.tgz#d2adbfbacc47fd55dce92478b322925e953ac831"
-  integrity sha512-q9FR1HHMWWvL0R2XRTZ5jikXTrj6O7WmXqlouelhxc73ODMg5IiESav9MFKfWXbxHt1C8aKtu3OWYwdbI4K7xw==
+"@tanstack/query-persist-client-core@4.32.6":
+  version "4.32.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-persist-client-core/-/query-persist-client-core-4.32.6.tgz#8dbe10c3e86246a708f2a8725a5596c55fe57d7e"
+  integrity sha512-MJJ7CldvT5HOel50h/3wOZZwVlIcroFD5Vxn8vPsfo2C0qQ208ilmN/81JWutm/lWy4n2BjnCrrWv6HvVI7S0w==
   dependencies:
-    "@tanstack/query-core" "5.8.3"
+    "@tanstack/query-core" "4.32.6"
 
-"@tanstack/query-sync-storage-persister@^5.8.3":
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-sync-storage-persister/-/query-sync-storage-persister-5.8.3.tgz#80a2672f2b7b170b40806f80a88c63687c9f3300"
-  integrity sha512-RLkrF0QiMITg33agfXJALXyXrYNE4WxKbxczTQlkmsFSdE/NXgHBXvlz+38AQ1UaibzQNF8bhLMEKFx07qraug==
+"@tanstack/query-sync-storage-persister@4.32.6":
+  version "4.32.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-sync-storage-persister/-/query-sync-storage-persister-4.32.6.tgz#f9fe8284372f9e15a7beb2913189dc4779063b60"
+  integrity sha512-hTwNo5O5EvydbfdVvwnwY0nIrNg1BxKEV4WAA8A+0NP9yc/9xoWy8RxbIkcz1p4JN2JhagaTKek8Fa5h5KitsA==
   dependencies:
-    "@tanstack/query-core" "5.8.3"
-    "@tanstack/query-persist-client-core" "5.8.3"
+    "@tanstack/query-persist-client-core" "4.32.6"
 
-"@tanstack/react-query-persist-client@^5.8.3":
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query-persist-client/-/react-query-persist-client-5.8.3.tgz#407286b5b7e5e92ca2470b5b39d25056bef40222"
-  integrity sha512-dNaMU84r8VH1PxG6hP8XAm/UQVv9d0muM+GeH/MRZzkh0KFpdK0u/+sAkrlV1WobolyOfaaIn2rWQ45Nm24+dw==
+"@tanstack/react-query-persist-client@4.32.6":
+  version "4.32.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-persist-client/-/react-query-persist-client-4.32.6.tgz#f8c539e8119461e4901dd6f212608ef8cfd4d117"
+  integrity sha512-EmNnYpvFYpxS4j5WFeNmfVVBxqq4RDnEFDBZwNKRfb4pzukcx/hcWtwqFk7Qj0EI4Dk8QGl239MEYwJbAc83tQ==
   dependencies:
-    "@tanstack/query-persist-client-core" "5.8.3"
+    "@tanstack/query-persist-client-core" "4.32.6"
 
-"@tanstack/react-query@^5.8.3":
-  version "5.8.3"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.8.3.tgz#3d5db417a4c62b0e04a9b4091ac748cac1bac06c"
-  integrity sha512-EDRrsMgUtKM+SjVmhDYBd4jwWWyHAw3kCaurKLIO90OfPQr/UhpwcqM2l/eQOaUYon9lfDB2ejQi1edHK7zEdA==
+"@tanstack/react-query@4.32.6":
+  version "4.32.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.32.6.tgz#f88c2d57f423d4cd295c501df2edeb3285a301bd"
+  integrity sha512-AITu/IKJJJXsHHeXNBy5bclu12t08usMCY0vFC2dh9SP/w6JAk5U9GwfjOIPj3p+ATADZvxQPe8UiCtMLNeQbg==
   dependencies:
-    "@tanstack/query-core" "5.8.3"
+    "@tanstack/query-core" "4.32.6"
+    use-sync-external-store "^1.2.0"
 
 "@tsconfig/react-native@^3.0.0":
   version "3.0.2"
@@ -6224,7 +6224,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@*, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -6336,6 +6336,13 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-animatable@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+  integrity sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-config@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.5.1.tgz#73c94f511493e9b7ff9350cdf351d203a1b05acc"
@@ -6356,6 +6363,14 @@ react-native-mmkv@^2.11.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.11.0.tgz#51b9985f6a5c09fe9c16d8c1861cc2901856ace1"
   integrity sha512-28PdUHjZJmAw3q+8zJDAAdohnZMpDC7WgRUJxACOMkcmJeqS3u5cKS/lSq2bhf1CvaeIiHYHUWiyatUjMRCDQQ==
+
+react-native-modal@^13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-13.0.1.tgz#691f1e646abb96fa82c1788bf18a16d585da37cd"
+  integrity sha512-UB+mjmUtf+miaG/sDhOikRfBOv0gJdBU2ZE1HtFWp6UixW9jCk/bhGdHUgmZljbPpp0RaO/6YiMmQSSK3kkMaw==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-animatable "1.3.3"
 
 react-native-reanimated@^3.5.4:
   version "3.5.4"
@@ -7409,7 +7424,7 @@ use-latest-callback@^0.1.7:
   resolved "https://registry.yarnpkg.com/use-latest-callback/-/use-latest-callback-0.1.9.tgz#10191dc54257e65a8e52322127643a8940271e2a"
   integrity sha512-CL/29uS74AwreI/f2oz2hLTW7ZqVeV5+gxFeGudzQrgkCytrHw33G4KbnQOrRlAEzzAFXi7dDLMC9zhWcVpzmw==
 
-use-sync-external-store@^1.0.0:
+use-sync-external-store@^1.0.0, use-sync-external-store@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==

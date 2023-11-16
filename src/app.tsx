@@ -46,11 +46,11 @@ function App(): JSX.Element {
               persister: clientPersister,
             }}>
             <NavigationContainer onReady={() => setNavigationReady(true)}>
-              <RawIntlProvider value={intl}>
-                <UserContextProvider>
+              <UserContextProvider>
+                <RawIntlProvider value={intl}>
                   <RootNavigation />
-                </UserContextProvider>
-              </RawIntlProvider>
+                </RawIntlProvider>
+              </UserContextProvider>
             </NavigationContainer>
           </PersistQueryClientProvider>
           <Toast />

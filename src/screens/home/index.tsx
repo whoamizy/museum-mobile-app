@@ -6,12 +6,14 @@ import { useNavigation } from 'src/navigation/hooks'
 
 import { Header } from './header'
 
+const ScreenHeader = () => <Header />
+
 export const HomeScreen = () => {
   const { setOptions } = useNavigation()
 
   useLayoutEffect(() => {
     setOptions({
-      header: Header,
+      header: ScreenHeader,
     })
   }, [setOptions])
 
