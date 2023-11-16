@@ -30,9 +30,6 @@ const Container = styled.SafeAreaView`
   justify-content: center;
   background-color: ${({ theme }) => theme.background};
 `
-const LogoBlock = styled.View`
-  margin-top: 30px;
-`
 
 const Title = styled.Text`
   width: 100%;
@@ -73,7 +70,6 @@ export const Header = ({
   StartComponent,
   EndComponent,
   hideBack,
-  Logo,
   ...props
 }: Props) => {
   const shouldShowBack = !StartComponent && !hideBack
@@ -90,10 +86,7 @@ export const Header = ({
             <View>{StartComponent}</View>
           )}
         </LeftBlock>
-        <Block>
-          {title && <Title numberOfLines={1}>{title}</Title>}
-          {Logo && <LogoBlock>{Logo}</LogoBlock>}
-        </Block>
+        <Block>{title && <Title numberOfLines={1}>{title}</Title>}</Block>
         <RightBlock>
           <View>{EndComponent}</View>
         </RightBlock>

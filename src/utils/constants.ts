@@ -19,3 +19,5 @@ export const APP_VERSION = isIOS
   : Config.ANDROID_VERSION_NAME
 
 export const MUSEUM_LINK = 'https://rusmuseum.ru/'
+
+export const ITEM_WIDTH = deviceWidth - 32

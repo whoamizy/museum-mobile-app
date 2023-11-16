@@ -1,10 +1,12 @@
-import { useLayoutEffect } from 'react'
-import styled from 'styled-components/native'
+import { useCallback, useLayoutEffect } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
-import { Button, Container, Header, Wrapper } from 'src/components'
-import { usePaddingBottom } from 'src/hooks'
+import { BottomAlert, Button, Container, Header, Wrapper } from 'src/components'
+import { useUser } from 'src/context'
+import { usePaddingBottom, useToggle } from 'src/hooks'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
+import { ROUTES } from 'src/navigation/routes'
 
 import { AboutAppContent } from './content'
 
@@ -17,7 +19,15 @@ const ScreenHeader = () => <Header title={t('aboutApp.title')} hideBack />
 
 export const AboutAppScreen = () => {
   const paddingBottom = usePaddingBottom()
-  const { setOptions } = useNavigation()
+  const { setOptions, replace } = useNavigation()
+  const { visible, open, close } = useToggle()
+  const { logout } = useUser()
+  const { red_dark } = useTheme()
+
+  const onAccept = useCallback(() => {
+    replace(ROUTES.AUTH_NAVIGATOR)
+    logout()
+  }, [logout, replace])
 
   useLayoutEffect(() => {
     setOptions({
@@ -30,9 +40,21 @@ export const AboutAppScreen = () => {
       <Container>
         <Content>
           <AboutAppContent />
-          <Button style={{ paddingBottom }} title={t('general.exit')} />
+          <Button
+            onPress={open}
+            style={{ paddingBottom }}
+            title={t('general.exit')}
+          />
         </Content>
       </Container>
+      <BottomAlert
+        title={t('general.exitQuestion')}
+        visible={visible}
+        onClose={close}
+        acceptColor={red_dark}
+        acceptText={t('general.exit')}
+        onAccept={onAccept}
+      />
     </Wrapper>
   )
 }
