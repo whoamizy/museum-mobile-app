@@ -16,6 +16,7 @@ export const theme = {
     primary: colors.black,
     error: colors.red_dark,
     accent: colors.red_dark,
+    accent_light: colors.red_medium,
   },
   input: {
     bg: {

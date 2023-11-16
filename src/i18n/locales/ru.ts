@@ -49,5 +49,6 @@ export const ru = {
   },
   news: {
     title: 'Новости',
+    emptyList: 'Пока что нет новостей',
   },
 }

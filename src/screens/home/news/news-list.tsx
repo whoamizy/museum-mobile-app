@@ -21,6 +21,25 @@ const Title = styled.Text`
   margin-bottom: 20px;
 `
 
+const EmptyWrapper = styled.View`
+  width: ${ITEM_WIDTH}px;
+  min-height: 155px;
+  align-items: center;
+  justify-content: center;
+`
+
+const EmptyText = styled.Text`
+  font-size: 20px;
+  font-family: ${({ theme }) => theme.font.montserrat700};
+  color: ${({ theme }) => theme.text.accent_light};
+`
+
+const ListEmptyComponent = (
+  <EmptyWrapper>
+    <EmptyText>{t('news.emptyList')}</EmptyText>
+  </EmptyWrapper>
+)
+
 export const NewsList = () => {
   const { red_dark } = useTheme()
   const { data: news, isLoading } = useGetAllNews()
@@ -44,6 +63,7 @@ export const NewsList = () => {
         decelerationRate="fast"
         snapToInterval={ITEM_WIDTH + 8}
         contentContainerStyle={styles.content}
+        ListEmptyComponent={ListEmptyComponent}
       />
     </Wrapper>
   )
