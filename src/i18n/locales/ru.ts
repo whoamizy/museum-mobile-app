@@ -38,4 +38,7 @@ export const ru = {
       call_to_action: 'Войдите в свой аккаунт',
     },
   },
+  aboutApp: {
+    title: 'О приложении',
+  },
 }

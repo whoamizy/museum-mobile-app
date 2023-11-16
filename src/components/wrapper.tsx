@@ -10,6 +10,14 @@ const BackgroundView = styled(SafeAreaView)`
   flex: 1;
 `
 
-export const Wrapper = ({ children, ...props }: SafeAreaViewProps) => {
-  return <BackgroundView {...props}>{children}</BackgroundView>
+export const Wrapper = ({
+  children,
+  edges = [],
+  ...props
+}: SafeAreaViewProps) => {
+  return (
+    <BackgroundView edges={edges} {...props}>
+      {children}
+    </BackgroundView>
+  )
 }
