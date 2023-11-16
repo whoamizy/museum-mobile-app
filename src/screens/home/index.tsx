@@ -5,6 +5,7 @@ import { Wrapper } from 'src/components'
 import { useNavigation } from 'src/navigation/hooks'
 
 import { Header } from './header'
+import { NewsList } from './news'
 
 const ScreenHeader = () => <Header />
 
@@ -19,6 +20,7 @@ export const HomeScreen = () => {
 
   return (
     <Wrapper>
+      <NewsList />
       <View>
         <Text>HomeScreen</Text>
       </View>
