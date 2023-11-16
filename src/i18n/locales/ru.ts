@@ -6,7 +6,7 @@ export const ru = {
     home: 'Главная',
     tickets: 'Мои билеты',
     collection: 'Коллекция',
-    profile: 'Профиль',
+    aboutApp: 'О приложении',
   },
   errors: {
     incorrectUsername: 'Неккоректное имя',
