@@ -15,6 +15,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { ThemeProvider } from 'styled-components/native'
 
+import { UserContextProvider } from './context'
 import { intl } from './i18n'
 import { RootNavigation } from './navigation/root'
 import { theme } from './theme'
@@ -46,7 +47,9 @@ function App(): JSX.Element {
             }}>
             <NavigationContainer onReady={() => setNavigationReady(true)}>
               <RawIntlProvider value={intl}>
-                <RootNavigation />
+                <UserContextProvider>
+                  <RootNavigation />
+                </UserContextProvider>
               </RawIntlProvider>
             </NavigationContainer>
           </PersistQueryClientProvider>
