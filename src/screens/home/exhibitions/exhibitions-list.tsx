@@ -2,13 +2,14 @@ import React, { useCallback } from 'react'
 import { FlatList, type ListRenderItem, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useGetAllNews } from 'src/api'
+import { useGetAllExhibitions } from 'src/api'
 import { Container } from 'src/components'
+import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
-import { type NewsItem } from 'src/types'
+import { type Exhibition } from 'src/types'
 import { ITEM_WIDTH } from 'src/utils'
 
-import { NewsCard } from './news-card'
+import { ExhibitionsCard } from './exhibitions-card'
 
 const Wrapper = styled.View`
   margin-top: 20px;
@@ -36,30 +37,29 @@ const EmptyText = styled.Text`
 
 const ListEmptyComponent = (
   <EmptyWrapper>
-    <EmptyText>{t('news.emptyList')}</EmptyText>
+    <EmptyText>{t('exhibitions.emptyList')}</EmptyText>
   </EmptyWrapper>
 )
 
-export const NewsList = () => {
-  const { data: news } = useGetAllNews()
+export const ExhibitionsList = () => {
+  const paddingBottom = usePaddingBottom()
+  const { data: exhibitions } = useGetAllExhibitions()
 
-  const renderItem: ListRenderItem<NewsItem> = useCallback(
-    ({ item }) => <NewsCard item={item} />,
+  const renderItem: ListRenderItem<Exhibition> = useCallback(
+    ({ item }) => <ExhibitionsCard item={item} />,
     [],
   )
 
   return (
     <Wrapper>
       <Container>
-        <Title>{t('news.title')}</Title>
+        <Title>{t('exhibitions.title')}</Title>
       </Container>
       <FlatList
-        horizontal
-        pagingEnabled
-        data={news}
+        style={{ paddingBottom }}
+        scrollEnabled={false}
+        data={exhibitions}
         renderItem={renderItem}
-        decelerationRate="fast"
-        snapToInterval={ITEM_WIDTH + 8}
         contentContainerStyle={styles.content}
         ListEmptyComponent={ListEmptyComponent}
       />

@@ -5,6 +5,7 @@ import { Wrapper } from 'src/components'
 import { useNavigation } from 'src/navigation/hooks'
 import { queryClient } from 'src/utils'
 
+import { ExhibitionsList } from './exhibitions'
 import { Header } from './header'
 import { NewsList } from './news'
 
@@ -23,6 +24,7 @@ export const HomeScreen = () => {
   const onRefresh = () => {
     setRefreshing(true)
     queryClient.refetchQueries({ queryKey: ['news'], type: 'active' })
+    queryClient.refetchQueries({ queryKey: ['exhibitions'], type: 'active' })
     setRefreshing(false)
   }
 
@@ -33,6 +35,7 @@ export const HomeScreen = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         <NewsList />
+        <ExhibitionsList />
       </ScrollView>
     </Wrapper>
   )

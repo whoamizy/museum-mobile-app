@@ -4,4 +4,5 @@ export enum Path {
   ME = '/users/me',
   NEWS = '/news',
   GET_IMAGE = '/get/images/',
+  EXHIBITIONS = '/exhibitions',
 }

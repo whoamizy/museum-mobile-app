@@ -5,8 +5,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Path } from 'src/enums'
 import { ArrowIcon } from 'src/icons'
-import { type NewsItem } from 'src/types'
-import { ITEM_WIDTH, openLink } from 'src/utils'
+import { useNavigation } from 'src/navigation/hooks'
+import { ROUTES } from 'src/navigation/routes'
+import { type Exhibition } from 'src/types'
+import { ITEM_WIDTH } from 'src/utils'
 
 const Card = styled.TouchableOpacity`
   width: ${ITEM_WIDTH}px;
@@ -19,16 +21,7 @@ const Card = styled.TouchableOpacity`
 const Background = styled(ImageBackground)`
   flex: 1;
   padding: 12px;
-`
-
-const Backdrop = styled.View`
-  background-color: ${({ theme }) => theme.red_dark};
-  width: ${ITEM_WIDTH / 2}px;
-  height: 150px;
-  border-bottom-right-radius: 100px;
-  position: absolute;
-  top: -30%;
-  left: 0;
+  justify-content: flex-end;
 `
 
 const Title = styled.Text`
@@ -45,18 +38,22 @@ const LinkWrapper = styled.View`
 `
 
 interface Props {
-  item: NewsItem
+  item: Exhibition
 }
 
-export const NewsCard = ({ item }: Props) => {
+export const ExhibitionsCard = ({ item }: Props) => {
   const { white } = useTheme()
-  const imageUrl = `${Config.BASE_URL}${Path.GET_IMAGE}${item.imageId}`
+  const { navigate } = useNavigation()
+  const imageUrl = `${Config.BASE_URL}${Path.GET_IMAGE}${item.images[0]}`
+
+  const navigateToTicketsHandler = () => {
+    navigate(ROUTES.EXHIBITION, { item })
+  }
 
   return (
-    <Card onPress={() => openLink(item.link)}>
+    <Card onPress={navigateToTicketsHandler}>
       <Background source={{ uri: imageUrl }} resizeMode="cover">
-        <Backdrop />
-        <Title numberOfLines={3}>{item.title}</Title>
+        <Title numberOfLines={1}>{item.name}</Title>
         <LinkWrapper>
           <ArrowIcon
             style={{ transform: [{ rotate: '180deg' }] }}

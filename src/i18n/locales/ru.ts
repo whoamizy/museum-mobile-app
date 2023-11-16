@@ -51,4 +51,8 @@ export const ru = {
     title: 'Новости',
     emptyList: 'Пока что нет новостей',
   },
+  exhibitions: {
+    title: 'Выставки',
+    emptyList: 'Пока что нет активных выставок',
+  },
 }
