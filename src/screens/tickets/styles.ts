@@ -31,7 +31,6 @@ export const ExhibitionInfo = styled.View`
 `
 
 export const Title = styled.Text`
-  flex: 1;
   font-size: 14px;
   font-family: ${({ theme }) => theme.font.montserrat700};
   color: ${({ theme }) => theme.text.primary};
