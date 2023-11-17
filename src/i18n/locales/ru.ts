@@ -68,6 +68,7 @@ export const ru = {
       error: 'Не удалось приобрести билет',
     },
     notFound: 'Пока что билетов нет',
+    title: 'Мои билеты',
   },
   months: {
     january: 'Январь',
