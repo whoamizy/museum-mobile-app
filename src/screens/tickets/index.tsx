@@ -7,6 +7,7 @@ import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
 
 import { TicketsList } from './list'
+import { LoaderWrapper } from './styles'
 
 const ScreenHeader = () => <Header title={t('tickets.title')} hideBack />
 
@@ -24,7 +25,11 @@ export const TicketsScreen = () => {
 
   return (
     <Wrapper>
-      {isLoading && <Loader color={red_dark} />}
+      {isLoading && (
+        <LoaderWrapper>
+          <Loader color={red_dark} />
+        </LoaderWrapper>
+      )}
       {!!tickets && <TicketsList tickets={tickets} />}
     </Wrapper>
   )
