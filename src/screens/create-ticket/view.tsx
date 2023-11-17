@@ -50,7 +50,7 @@ export const CreateTicketView = ({
   const { red_dark } = useTheme()
 
   const { selected } = useTickets()
-  const formattedDate = format(Date.parse(selected), 'yyy-MM-dd')
+  const formattedDate = format(Date.parse(selected), 'yyyy-MM-dd')
 
   const { date, time, exhibition: id } = values
 
@@ -79,7 +79,7 @@ export const CreateTicketView = ({
   })
   const { data: exhibition } = useGetOneExhibition(id)
 
-  const filteredTimes = filterFreeTimes(freeTimes)
+  const filteredTimes = filterFreeTimes(freeTimes, formattedDate)
 
   return (
     <Wrapper>
