@@ -43,6 +43,7 @@ export const CreateTicketContent = () => {
             ],
             type: 'active',
           })
+          queryClient.refetchQueries({ queryKey: ['tickets'], type: 'active' })
           replace(ROUTES.TAB)
         },
         onSettled: () => {

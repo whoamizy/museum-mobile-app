@@ -3,10 +3,10 @@ import { type User } from './user'
 
 export interface Ticket {
   _id: string
-  user: User | string
+  user: User
   date: string
   time: string
-  exhibition: Exhibition | string
+  exhibition: Exhibition
 }
 
 export interface CreateTicketPayload {
@@ -14,4 +14,8 @@ export interface CreateTicketPayload {
   date: string
   time: string
   exhibition: string
+}
+
+export interface TicketParams {
+  id: string
 }

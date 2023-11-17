@@ -40,3 +40,10 @@ export const Description = styled.Text`
 export const StyledButton = styled(Button)`
   padding-horizontal: 16px;
 `
+
+export const DateAndTime = styled.Text`
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.font.montserrat600};
+  color: ${({ theme }) => theme.text.accent};
+  margin-vertical: 20px;
+`

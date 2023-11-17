@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 import { type CreateTicketPayload } from 'src/types'
 
@@ -10,3 +10,20 @@ export const useCreateTicketMutation = () => {
       TicketsService.create(payload),
   })
 }
+
+export const useGetAllTickets = () => {
+  return useQuery({
+    queryKey: ['tickets'],
+    queryFn: () => TicketsService.getAll(),
+  })
+}
+
+export const useGetOneTicket = (id: string) => {
+  return useQuery({
+    queryKey: ['tickets/id', { id }],
+    queryFn: () => TicketsService.getOne(id),
+  })
+}
+
+export const useDeleteTicket = () =>
+  useMutation({ mutationFn: (id: string) => TicketsService.delete(id) })

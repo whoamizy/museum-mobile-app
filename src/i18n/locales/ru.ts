@@ -68,6 +68,14 @@ export const ru = {
       error: 'Не удалось приобрести билет',
     },
     notFound: 'Пока что билетов нет',
+    title: 'Мои билеты',
+    item: {
+      title: 'Детали билета',
+      delete: 'Отменить билет',
+      successDelete: 'Билет успешно отменен',
+      errorDelete: 'Не удалось отменить билет',
+      date: '{date} в {time}',
+    },
   },
   months: {
     january: 'Январь',
