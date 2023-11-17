@@ -6,7 +6,10 @@ import { FreeTimesService } from '../services'
 
 export const useGetFreeTimes = (params: GetFreeTimesParams) => {
   return useQuery({
-    queryKey: ['free-times', { data: params.date }],
+    queryKey: [
+      'free-times',
+      { date: params.date, exhibition: params.exhibition },
+    ],
     queryFn: () => FreeTimesService.getAll(params),
     staleTime: 0,
   })

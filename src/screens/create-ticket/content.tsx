@@ -37,7 +37,10 @@ export const CreateTicketContent = () => {
         onSuccess: () => {
           Toast.show({ type: 'success', text1: t('tickets.create.success') })
           queryClient.refetchQueries({
-            queryKey: ['free-times', { data: values.date }],
+            queryKey: [
+              'free-times',
+              { date: values.date, exhibition: values.exhibition },
+            ],
             type: 'active',
           })
           replace(ROUTES.TAB)
