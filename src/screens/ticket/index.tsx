@@ -47,7 +47,7 @@ export const TicketScreen = () => {
   const onRefresh = () => {
     setRefreshing(true)
     queryClient.refetchQueries({
-      queryKey: ['tickets/', id],
+      queryKey: ['tickets/id', { id }],
       type: 'active',
     })
     setRefreshing(false)

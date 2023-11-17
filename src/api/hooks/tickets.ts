@@ -20,7 +20,7 @@ export const useGetAllTickets = () => {
 
 export const useGetOneTicket = (id: string) => {
   return useQuery({
-    queryKey: ['tickets/', id],
+    queryKey: ['tickets/id', { id }],
     queryFn: () => TicketsService.getOne(id),
   })
 }

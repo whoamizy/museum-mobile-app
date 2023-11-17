@@ -42,7 +42,7 @@ export const ExhibitionScreen = () => {
   const onRefresh = () => {
     setRefreshing(true)
     queryClient.refetchQueries({
-      queryKey: ['exhibitions', id],
+      queryKey: ['exhibitions/id', { id }],
       type: 'active',
     })
     setRefreshing(false)
