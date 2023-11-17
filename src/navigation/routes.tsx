@@ -1,6 +1,11 @@
 import { t } from 'src/i18n'
-import { HomeIcon, InfoIcon, TicketIcon } from 'src/icons'
-import { AboutAppScreen, HomeScreen, TicketsScreen } from 'src/screens'
+import { CollectionIcon, HomeIcon, InfoIcon, TicketIcon } from 'src/icons'
+import {
+  AboutAppScreen,
+  CollectionScreen,
+  HomeScreen,
+  TicketsScreen,
+} from 'src/screens'
 
 import { type TabBarRoute } from './types'
 
@@ -37,6 +42,12 @@ export const TabRoutes: TabBarRoute[] = [
     component: TicketsScreen,
     Icon: TicketIcon,
     title: t('tabbar.tickets'),
+  },
+  {
+    name: APP_ROUTES.COLLECTION,
+    component: CollectionScreen,
+    Icon: CollectionIcon,
+    title: t('tabbar.collection'),
   },
   {
     name: APP_ROUTES.ABOUT_APP,
