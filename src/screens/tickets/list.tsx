@@ -4,11 +4,12 @@ import {
   type ListRenderItem,
   RefreshControl,
   StyleSheet,
-  Text,
 } from 'react-native'
 
 import { type Ticket } from 'src/types'
 import { queryClient } from 'src/utils'
+
+import { TicketsItem } from './item'
 
 interface Props {
   tickets: Ticket[]
@@ -24,7 +25,7 @@ export const TicketsList = ({ tickets }: Props) => {
   }
 
   const renderItem: ListRenderItem<Ticket> = useCallback(
-    ({ item }) => <Text>{item.time}</Text>,
+    ({ item }) => <TicketsItem ticket={item} />,
     [],
   )
 

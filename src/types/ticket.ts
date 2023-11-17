@@ -1,20 +1,12 @@
 import { type Exhibition } from './exhibitions'
 import { type User } from './user'
 
-export interface CreateTicket {
-  _id: string
-  user: User | string
-  date: string
-  time: string
-  exhibition: Exhibition | string
-}
-
 export interface Ticket {
   _id: string
-  user: User | string
+  user: User
   date: string
   time: string
-  exhibition: Exhibition | string
+  exhibition: Exhibition
 }
 
 export interface CreateTicketPayload {
