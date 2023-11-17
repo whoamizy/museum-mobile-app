@@ -11,6 +11,7 @@ import { useNavigation } from 'src/navigation/hooks'
 import { ROUTES } from 'src/navigation/routes'
 import { type ExhibitionProp } from 'src/navigation/types'
 import { type CreateTicketPayload, type FormikSubmit } from 'src/types'
+import { queryClient } from 'src/utils'
 
 import { CreateTicketView } from './view'
 
@@ -35,6 +36,10 @@ export const CreateTicketContent = () => {
       create(values, {
         onSuccess: () => {
           Toast.show({ type: 'success', text1: t('tickets.create.success') })
+          queryClient.refetchQueries({
+            queryKey: ['free-times', { data: values.date }],
+            type: 'active',
+          })
           replace(ROUTES.TAB)
         },
         onSettled: () => {

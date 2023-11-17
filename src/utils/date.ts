@@ -77,3 +77,17 @@ export const MONTHS = [
   t('months.november'),
   t('months.december'),
 ]
+
+export const filterFreeTimes = (timeSlots?: string[]) => {
+  const now = new Date()
+
+  const filteredTimeSlots = timeSlots?.filter((slot) => {
+    const [slotHours, slotMinutes] = slot.split(':').map(Number)
+    const slotTime = new Date(now)
+    slotTime.setHours(slotHours, slotMinutes, 0, 0)
+
+    return slotTime > now
+  })
+
+  return filteredTimeSlots
+}

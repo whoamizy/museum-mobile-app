@@ -1,16 +1,43 @@
 import { useEffect, useRef, useState } from 'react'
-import { ScrollView } from 'react-native'
-import addHours from 'date-fns/addHours'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import format from 'date-fns/format'
 import { type FormikProps } from 'formik'
+import { useTheme } from 'styled-components/native'
 
-import { useGetFreeTimes } from 'src/api'
-import { Button, Container, Month, TimeChip, Wrapper } from 'src/components'
+import { useGetFreeTimes, useGetOneExhibition } from 'src/api'
+import {
+  Button,
+  Container,
+  Loader,
+  Month,
+  Separator,
+  TimeChip,
+  Wrapper,
+} from 'src/components'
 import { useTickets } from 'src/context'
 import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
 import { type CreateTicketPayload } from 'src/types'
-import { timezoneOffset } from 'src/utils'
+import { filterFreeTimes } from 'src/utils'
+
+import {
+  Address,
+  CalendarWrapper,
+  ChipWrapper,
+  Content,
+  EmptyText,
+  EmptyWrapper,
+  Info,
+  LoaderWrapper,
+  Price,
+  Title,
+} from './styles'
+
+const ListEmptyContent = () => (
+  <EmptyWrapper>
+    <EmptyText>{t('tickets.notFound')}</EmptyText>
+  </EmptyWrapper>
+)
 
 export const CreateTicketView = ({
   values,
@@ -20,59 +47,97 @@ export const CreateTicketView = ({
 }: FormikProps<CreateTicketPayload>) => {
   const scrollViewRef = useRef<ScrollView>(null)
   const paddingBottom = usePaddingBottom()
+  const { red_dark } = useTheme()
 
   const { selected } = useTickets()
   const formattedDate = format(Date.parse(selected), 'yyy-MM-dd')
 
-  const { date, time, exhibition } = values
+  const { date, time, exhibition: id } = values
 
   const isDisabled = isSubmitting || !date || !time
 
-  const [currentTime, setCurrentTime] = useState('')
+  const [currentTime, setCurrentTime] = useState<string>()
 
   const scrollToStart = () => {
     scrollViewRef.current?.scrollTo({ x: 0, animated: true })
   }
 
   useEffect(() => {
-    setCurrentTime('')
+    setCurrentTime(undefined)
     setFieldValue('date', formattedDate)
     scrollToStart()
   }, [formattedDate, selected, setFieldValue])
 
   const handleChangeTime = (selectedTime: string) => {
-    const formattedSelectedTime = format(new Date(selectedTime), 'HH:mm')
-    setFieldValue('time', formattedSelectedTime)
-    setCurrentTime(formattedSelectedTime)
+    setFieldValue('time', selectedTime)
+    setCurrentTime(selectedTime)
   }
 
-  const { data: freeTimes } = useGetFreeTimes({
-    exhibition,
+  const { data: freeTimes, isLoading } = useGetFreeTimes({
+    exhibition: id,
     date: formattedDate,
   })
+  const { data: exhibition } = useGetOneExhibition(id)
+
+  const filteredTimes = filterFreeTimes(freeTimes)
 
   return (
     <Wrapper>
       <Container>
-        <Month />
-        <ScrollView horizontal ref={scrollViewRef}>
-          {freeTimes?.map((item) => (
-            <TimeChip
-              key={item}
-              label={format(addHours(new Date(item), timezoneOffset), 'HH:mm')}
-              selected={currentTime === format(new Date(item), 'HH:mm')}
-              onPress={() => handleChangeTime(item)}
-            />
-          ))}
-        </ScrollView>
-        <Button
-          style={{ paddingBottom }}
-          title={t('tickets.create.label')}
-          isDisabled={isDisabled}
-          loading={isSubmitting}
-          onPress={submitForm}
-        />
+        <Content>
+          <View>
+            <ScrollView>
+              <CalendarWrapper>
+                <Month />
+              </CalendarWrapper>
+              <ScrollView style={styles.content} horizontal ref={scrollViewRef}>
+                {isLoading && (
+                  <LoaderWrapper>
+                    <Loader color={red_dark} size="small" />
+                  </LoaderWrapper>
+                )}
+                {!!filteredTimes && (
+                  <>
+                    {filteredTimes.length === 0 && <ListEmptyContent />}
+                    {filteredTimes.map((item, index) => (
+                      <ChipWrapper key={item} hasMargin={index > 0}>
+                        <TimeChip
+                          label={item}
+                          selected={currentTime === item}
+                          onPress={() => handleChangeTime(item)}
+                        />
+                      </ChipWrapper>
+                    ))}
+                  </>
+                )}
+              </ScrollView>
+              {!!exhibition && (
+                <Info>
+                  <Separator />
+                  <Title>{exhibition.name}</Title>
+                  <Address>{exhibition.address}</Address>
+                  <Price>
+                    {t('exhibitions.item.price', { value: exhibition.price })}
+                  </Price>
+                </Info>
+              )}
+            </ScrollView>
+          </View>
+          <Button
+            style={{ paddingBottom }}
+            title={t('tickets.create.label')}
+            isDisabled={isDisabled}
+            loading={isSubmitting}
+            onPress={submitForm}
+          />
+        </Content>
       </Container>
     </Wrapper>
   )
 }
+
+const styles = StyleSheet.create({
+  content: {
+    flexGrow: 1,
+  },
+})

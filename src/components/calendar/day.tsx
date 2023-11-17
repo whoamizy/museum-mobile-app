@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { isBefore, isToday } from 'date-fns'
-import getDay from 'date-fns/getDay'
 import styled, { css } from 'styled-components/native'
 
 interface UIProps {
@@ -40,8 +39,7 @@ export const Day = ({ date, day, selected, setSelected }: Props) => {
   const currentDate = new Date()
   const isCurrent = isToday(Date.parse(date))
   const isCurrentBefore = isBefore(new Date(date), currentDate)
-  const dayOfWeek = getDay(Date.parse(date))
-  const isDisabled = isCurrent || isCurrentBefore || dayOfWeek === 2
+  const isDisabled = !isCurrent && isCurrentBefore
 
   const handlePress = useCallback(() => {
     setSelected?.(date)
