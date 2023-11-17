@@ -1,11 +1,23 @@
 import React, { useCallback } from 'react'
 import { FlatList, type ListRenderItem, StyleSheet, View } from 'react-native'
 import Config from 'react-native-config'
+import styled from 'styled-components/native'
 
 import { Path } from 'src/enums'
 import { ITEM_WIDTH } from 'src/utils'
 
-import { ImageWrapper, StyledImage } from './styles'
+export const ImageWrapper = styled.View`
+  width: ${ITEM_WIDTH}px;
+  height: 200px;
+  background-color: ${({ theme }) => theme.red_light};
+  overflow: hidden;
+  border-radius: 16px;
+`
+
+export const StyledImage = styled.Image`
+  width: 100%;
+  height: 100%;
+`
 
 interface Props {
   images: string[]

@@ -20,7 +20,10 @@ export const useGetAllTickets = () => {
 
 export const useGetOneTicket = (id: string) => {
   return useQuery({
-    queryKey: ['tickets', id],
+    queryKey: ['tickets/', id],
     queryFn: () => TicketsService.getOne(id),
   })
 }
+
+export const useDeleteTicket = () =>
+  useMutation({ mutationFn: (id: string) => TicketsService.delete(id) })

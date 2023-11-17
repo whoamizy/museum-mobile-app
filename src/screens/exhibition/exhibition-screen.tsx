@@ -4,7 +4,13 @@ import { useRoute } from '@react-navigation/native'
 import { useTheme } from 'styled-components/native'
 
 import { useGetOneExhibition } from 'src/api'
-import { Container, Loader, Separator, Wrapper } from 'src/components'
+import {
+  Container,
+  ExhibitionSlider,
+  Loader,
+  Separator,
+  Wrapper,
+} from 'src/components'
 import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
@@ -12,7 +18,6 @@ import { ROUTES } from 'src/navigation/routes'
 import { type ExhibitionProp } from 'src/navigation/types'
 import { queryClient } from 'src/utils'
 
-import { ExhibitionSlider } from './exhibition-slider'
 import {
   Address,
   Description,

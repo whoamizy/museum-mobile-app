@@ -29,4 +29,13 @@ export class TicketsService extends BaseService {
 
     return data
   }
+
+  public static async delete(id: string) {
+    const { data } = await this.fetch<Ticket>({
+      url: `${Path.TICKETS}/${id}`,
+      method: 'DELETE',
+    })
+
+    return data
+  }
 }
