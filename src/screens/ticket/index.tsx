@@ -7,13 +7,14 @@ import { useTheme } from 'styled-components/native'
 
 import { useDeleteTicket, useGetOneTicket } from 'src/api'
 import {
+  BottomAlert,
   Container,
   ExhibitionSlider,
   Loader,
   Separator,
   Wrapper,
 } from 'src/components'
-import { usePaddingBottom } from 'src/hooks'
+import { usePaddingBottom, useToggle } from 'src/hooks'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
 import { ROUTES } from 'src/navigation/routes'
@@ -36,6 +37,7 @@ export const TicketScreen = () => {
   const [refreshing, setRefreshing] = useState(false)
   const { replace } = useNavigation()
   const [isRemoving, setIsRemoving] = useState(false)
+  const { visible, open, close } = useToggle()
 
   const {
     params: { id },
@@ -113,9 +115,17 @@ export const TicketScreen = () => {
       <StyledButton
         style={{ paddingBottom }}
         title={t('tickets.item.delete')}
-        onPress={deleteHandler}
+        onPress={open}
         loading={isRemoving}
         isDisabled={isRemoving}
+      />
+      <BottomAlert
+        title={t('tickets.item.question')}
+        visible={visible && !isRemoving}
+        onClose={close}
+        acceptColor={red_dark}
+        acceptText={t('tickets.item.labelShort')}
+        onAccept={deleteHandler}
       />
     </Wrapper>
   )

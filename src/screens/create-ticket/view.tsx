@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components/native'
 
 import { useGetFreeTimes, useGetOneExhibition } from 'src/api'
 import {
+  BottomAlert,
   Button,
   Container,
   Loader,
@@ -15,7 +16,7 @@ import {
   Wrapper,
 } from 'src/components'
 import { useTickets } from 'src/context'
-import { usePaddingBottom } from 'src/hooks'
+import { usePaddingBottom, useToggle } from 'src/hooks'
 import { t } from 'src/i18n'
 import { type CreateTicketPayload } from 'src/types'
 import { filterFreeTimes } from 'src/utils'
@@ -48,9 +49,11 @@ export const CreateTicketView = ({
   const scrollViewRef = useRef<ScrollView>(null)
   const paddingBottom = usePaddingBottom()
   const { red_dark } = useTheme()
+  const { visible, open, close } = useToggle()
 
   const { selected } = useTickets()
   const formattedDate = format(Date.parse(selected), 'yyyy-MM-dd')
+  const dateForQuestion = format(new Date(formattedDate), 'dd MMMM')
 
   const { date, time, exhibition: id } = values
 
@@ -128,10 +131,21 @@ export const CreateTicketView = ({
             title={t('tickets.create.label')}
             isDisabled={isDisabled}
             loading={isSubmitting}
-            onPress={submitForm}
+            onPress={open}
           />
         </Content>
       </Container>
+      <BottomAlert
+        title={t('tickets.create.question', {
+          date: dateForQuestion,
+          time,
+        })}
+        visible={visible && !isSubmitting}
+        onClose={close}
+        acceptColor={red_dark}
+        acceptText={t('tickets.create.labelShort')}
+        onAccept={submitForm}
+      />
     </Wrapper>
   )
 }
