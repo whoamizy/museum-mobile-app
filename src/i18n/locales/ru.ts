@@ -69,6 +69,9 @@ export const ru = {
     },
     notFound: 'Пока что билетов нет',
     title: 'Мои билеты',
+    item: {
+      title: 'Детали билета',
+    },
   },
   months: {
     january: 'Январь',

@@ -15,3 +15,7 @@ export interface CreateTicketPayload {
   time: string
   exhibition: string
 }
+
+export interface TicketParams {
+  id: string
+}

@@ -13,7 +13,7 @@ export const StyledImage = styled.Image`
   border-radius: 6px;
 `
 
-export const TicketCard = styled.View`
+export const TicketCard = styled.TouchableOpacity`
   width: 100%;
   flex-direction: row;
   gap: 8px;
