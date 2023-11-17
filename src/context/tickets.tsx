@@ -51,9 +51,9 @@ export const TicketsProvider = ({
     initialDate.toISOString(),
   )
 
-  const handleSelectTime = useCallback(
-    (time: string) => {
-      setSelected(time)
+  const handleSelectDate = useCallback(
+    (date: string) => {
+      setSelected(date)
     },
     [setSelected],
   )
@@ -61,9 +61,9 @@ export const TicketsProvider = ({
   const value: Values = useMemo(
     () => ({
       selected: calendarSelected,
-      selectDate: handleSelectTime,
+      selectDate: handleSelectDate,
     }),
-    [calendarSelected, handleSelectTime],
+    [calendarSelected, handleSelectDate],
   )
 
   return <Context.Provider value={value}>{children}</Context.Provider>
