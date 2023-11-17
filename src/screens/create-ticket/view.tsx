@@ -47,7 +47,7 @@ export const CreateTicketView = ({
   isSubmitting,
 }: FormikProps<CreateTicketPayload>) => {
   const scrollViewRef = useRef<ScrollView>(null)
-  const paddingBottom = usePaddingBottom()
+  const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { red_dark } = useTheme()
   const { visible, open, close } = useToggle()
 
@@ -153,5 +153,6 @@ export const CreateTicketView = ({
 const styles = StyleSheet.create({
   content: {
     flexGrow: 1,
+    paddingBottom: 16,
   },
 })

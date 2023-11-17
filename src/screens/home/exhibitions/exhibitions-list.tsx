@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { useGetAllExhibitions } from 'src/api'
 import { Container } from 'src/components'
-import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
 import { type Exhibition } from 'src/types'
 import { ITEM_WIDTH } from 'src/utils'
@@ -42,7 +41,6 @@ const ListEmptyComponent = (
 )
 
 export const ExhibitionsList = () => {
-  const paddingBottom = usePaddingBottom()
   const { data: exhibitions } = useGetAllExhibitions()
 
   const renderItem: ListRenderItem<Exhibition> = useCallback(
@@ -56,7 +54,6 @@ export const ExhibitionsList = () => {
         <Title>{t('exhibitions.title')}</Title>
       </Container>
       <FlatList
-        style={{ paddingBottom }}
         scrollEnabled={false}
         data={exhibitions}
         renderItem={renderItem}
@@ -71,5 +68,6 @@ const styles = StyleSheet.create({
   content: {
     gap: 8,
     paddingHorizontal: 16,
+    paddingBottom: 16,
   },
 })

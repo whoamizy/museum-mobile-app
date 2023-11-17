@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BottomAlert, Button, Container, Header, Wrapper } from 'src/components'
 import { useUser } from 'src/context'
-import { usePaddingBottom, useToggle } from 'src/hooks'
+import { useToggle } from 'src/hooks'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
 import { ROUTES } from 'src/navigation/routes'
@@ -15,10 +15,13 @@ const Content = styled.View`
   justify-content: space-between;
 `
 
+const StyledButton = styled(Button)`
+  padding-bottom: 16px;
+`
+
 const ScreenHeader = () => <Header title={t('aboutApp.title')} hideBack />
 
 export const AboutAppScreen = () => {
-  const paddingBottom = usePaddingBottom()
   const { setOptions, replace } = useNavigation()
   const { visible, open, close } = useToggle()
   const { logout } = useUser()
@@ -40,11 +43,7 @@ export const AboutAppScreen = () => {
       <Container>
         <Content>
           <AboutAppContent />
-          <Button
-            onPress={open}
-            style={{ paddingBottom }}
-            title={t('general.exit')}
-          />
+          <StyledButton onPress={open} title={t('general.exit')} />
         </Content>
       </Container>
       <BottomAlert

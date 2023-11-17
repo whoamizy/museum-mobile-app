@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RefreshControl, ScrollView, View } from 'react-native'
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { useTheme } from 'styled-components/native'
 
@@ -28,7 +28,7 @@ import {
 } from './styles'
 
 export const ExhibitionScreen = () => {
-  const paddingBottom = usePaddingBottom()
+  const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { red_dark } = useTheme()
   const [refreshing, setRefreshing] = useState(false)
   const { navigate } = useNavigation()
@@ -65,10 +65,11 @@ export const ExhibitionScreen = () => {
   return (
     <Wrapper>
       <ScrollView
+        contentContainerStyle={styles.content}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <View style={{ paddingBottom }}>
+        <View>
           <ExhibitionSlider images={exhibition.images} />
           <Container>
             <Title>{exhibition.name}</Title>
@@ -90,3 +91,9 @@ export const ExhibitionScreen = () => {
     </Wrapper>
   )
 }
+
+const styles = StyleSheet.create({
+  content: {
+    paddingBottom: 16,
+  },
+})

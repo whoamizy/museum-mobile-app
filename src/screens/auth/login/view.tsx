@@ -26,7 +26,7 @@ export const LoginView = ({
   isSubmitting,
   isValid,
 }: FormikProps<LoginPayload>) => {
-  const paddingBottom = usePaddingBottom()
+  const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { replace } = useNavigation()
 
   const { email, password } = values
