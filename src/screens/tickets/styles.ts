@@ -57,3 +57,16 @@ export const DateAndTime = styled.Text`
   color: ${({ theme }) => theme.text.accent};
   text-align: right;
 `
+
+export const EmptyWrapper = styled.View`
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+`
+
+export const EmptyText = styled.Text`
+  font-size: 20px;
+  font-family: ${({ theme }) => theme.font.montserrat700};
+  color: ${({ theme }) => theme.text.accent_light};
+`

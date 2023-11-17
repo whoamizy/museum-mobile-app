@@ -6,10 +6,18 @@ import {
   StyleSheet,
 } from 'react-native'
 
+import { t } from 'src/i18n'
 import { type Ticket } from 'src/types'
 import { queryClient } from 'src/utils'
 
 import { TicketsItem } from './item'
+import { EmptyText, EmptyWrapper } from './styles'
+
+const EmptyListComponent = (
+  <EmptyWrapper>
+    <EmptyText>{t('tickets.notFound')}</EmptyText>
+  </EmptyWrapper>
+)
 
 interface Props {
   tickets: Ticket[]
@@ -37,6 +45,7 @@ export const TicketsList = ({ tickets }: Props) => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
+      ListEmptyComponent={EmptyListComponent}
     />
   )
 }
