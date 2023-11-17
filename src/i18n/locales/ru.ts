@@ -106,5 +106,8 @@ export const ru = {
   },
   collection: {
     title: 'Коллекция музея',
+    notFound: 'Пока что коллекция пуста',
+    author: 'Автор: {value}',
+    date: 'Дата создания: {value}',
   },
 }
