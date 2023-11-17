@@ -99,5 +99,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     gap: 8,
     paddingHorizontal: 16,
+    paddingBottom: 16,
   },
 })

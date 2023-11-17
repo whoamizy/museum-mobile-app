@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RefreshControl, ScrollView, View } from 'react-native'
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useRoute } from '@react-navigation/native'
 import format from 'date-fns/format'
@@ -32,7 +32,7 @@ import {
 } from './styles'
 
 export const TicketScreen = () => {
-  const paddingBottom = usePaddingBottom()
+  const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { red_dark } = useTheme()
   const [refreshing, setRefreshing] = useState(false)
   const { replace } = useNavigation()
@@ -88,10 +88,11 @@ export const TicketScreen = () => {
   return (
     <Wrapper>
       <ScrollView
+        contentContainerStyle={styles.content}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <View style={{ paddingBottom }}>
+        <View>
           <ExhibitionSlider images={ticket.exhibition.images} />
           <Container>
             <Title>{ticket.exhibition.name}</Title>
@@ -130,3 +131,9 @@ export const TicketScreen = () => {
     </Wrapper>
   )
 }
+
+const styles = StyleSheet.create({
+  content: {
+    paddingBottom: 16,
+  },
+})

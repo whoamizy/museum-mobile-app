@@ -26,7 +26,7 @@ export const RegisterView = ({
   isSubmitting,
   isValid,
 }: FormikProps<RegisterPayload>) => {
-  const paddingBottom = usePaddingBottom()
+  const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { replace } = useNavigation()
 
   const { username, email, password } = values
