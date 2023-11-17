@@ -7,6 +7,8 @@ import { useGetOneExhibition } from 'src/api'
 import { Container, Loader, Separator, Wrapper } from 'src/components'
 import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
+import { useNavigation } from 'src/navigation/hooks'
+import { ROUTES } from 'src/navigation/routes'
 import { type ExhibitionProp } from 'src/navigation/types'
 import { queryClient } from 'src/utils'
 
@@ -24,6 +26,7 @@ export const ExhibitionScreen = () => {
   const paddingBottom = usePaddingBottom()
   const { red_dark } = useTheme()
   const [refreshing, setRefreshing] = useState(false)
+  const { navigate } = useNavigation()
 
   const {
     params: { id },
@@ -38,6 +41,10 @@ export const ExhibitionScreen = () => {
       type: 'active',
     })
     setRefreshing(false)
+  }
+
+  const navigateToCreateTicket = () => {
+    navigate(ROUTES.CREATE_TICKET, { id })
   }
 
   if (!exhibition) {
@@ -71,8 +78,9 @@ export const ExhibitionScreen = () => {
         </View>
       </ScrollView>
       <StyledButton
-        title={t('exhibitions.item.getTicket')}
         style={{ paddingBottom }}
+        title={t('exhibitions.item.getTicket')}
+        onPress={navigateToCreateTicket}
       />
     </Wrapper>
   )
