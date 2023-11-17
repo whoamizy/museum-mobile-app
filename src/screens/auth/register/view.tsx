@@ -1,7 +1,7 @@
 import { TouchableOpacity, View } from 'react-native'
 import { type FormikProps } from 'formik'
 
-import { Button, InputText } from 'src/components'
+import { Button, ButtonContainer, InputText } from 'src/components'
 import { usePaddingBottom } from 'src/hooks'
 import { t } from 'src/i18n'
 import { useNavigation } from 'src/navigation/hooks'
@@ -79,13 +79,15 @@ export const RegisterView = ({
           />
         </Inputs>
       </View>
-      <Button
-        style={{ paddingBottom }}
-        title={t('auth.register.button')}
-        isDisabled={isDisabled}
-        loading={isSubmitting}
-        onPress={submitForm}
-      />
+      <ButtonContainer>
+        <Button
+          style={{ paddingBottom }}
+          title={t('auth.register.button')}
+          isDisabled={isDisabled}
+          loading={isSubmitting}
+          onPress={submitForm}
+        />
+      </ButtonContainer>
     </Wrapper>
   )
 }
