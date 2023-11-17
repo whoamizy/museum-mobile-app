@@ -1,9 +1,15 @@
 package com.museum;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+import androidx.core.view.WindowCompat;
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
@@ -14,6 +20,13 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "museum";
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this, R.style.SplashScreenTheme, true);
+    super.onCreate(null);
+    WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
   }
 
   /**
