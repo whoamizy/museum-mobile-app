@@ -64,6 +64,8 @@ export const ru = {
   tickets: {
     create: {
       label: 'Заказать билет',
+      labelShort: 'Заказать',
+      question: 'Вы уверены что хотите заказать билет на {date} в {time}?',
       success: 'Билет успешно приобритен',
       error: 'Не удалось приобрести билет',
     },
@@ -75,6 +77,8 @@ export const ru = {
       successDelete: 'Билет успешно отменен',
       errorDelete: 'Не удалось отменить билет',
       date: '{date} в {time}',
+      labelShort: 'Отменить',
+      question: 'Вы уверены что хотите отменить билет?',
     },
   },
   months: {
