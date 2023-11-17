@@ -104,4 +104,7 @@ export const ru = {
     sat: 'сб',
     sun: 'вс',
   },
+  collection: {
+    title: 'Коллекция музея',
+  },
 }
