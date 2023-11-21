@@ -20,10 +20,6 @@ const CreateTicketHeader = ({ navigation }: NativeStackHeaderProps) => (
   <Header onBack={navigation.goBack} title={t('exhibitions.item.getTicket')} />
 )
 
-const TicketHeader = ({ navigation }: NativeStackHeaderProps) => (
-  <Header onBack={navigation.goBack} title={t('tickets.item.title')} />
-)
-
 const Stack = createNativeStackNavigator()
 
 export const MainNavigator = () => {
@@ -40,11 +36,7 @@ export const MainNavigator = () => {
         component={CreateTicketScreen}
         options={{ header: CreateTicketHeader }}
       />
-      <Stack.Screen
-        name={ROUTES.TICKET}
-        component={TicketScreen}
-        options={{ header: TicketHeader }}
-      />
+      <Stack.Screen name={ROUTES.TICKET} component={TicketScreen} />
     </Stack.Navigator>
   )
 }

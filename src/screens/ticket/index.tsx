@@ -1,7 +1,14 @@
-import { useState } from 'react'
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
+import { useCallback, useLayoutEffect, useState } from 'react'
+import {
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useRoute } from '@react-navigation/native'
+import { type NativeStackHeaderProps } from '@react-navigation/native-stack'
 import format from 'date-fns/format'
 import { useTheme } from 'styled-components/native'
 
@@ -10,17 +17,20 @@ import {
   BottomAlert,
   Container,
   ExhibitionSlider,
+  Header,
   Loader,
   Separator,
   Wrapper,
 } from 'src/components'
 import { usePaddingBottom, useToggle } from 'src/hooks'
 import { t } from 'src/i18n'
+import { QrCodeIcon } from 'src/icons'
 import { useNavigation } from 'src/navigation/hooks'
 import { ROUTES } from 'src/navigation/routes'
 import { type TicketProp } from 'src/navigation/types'
 import { queryClient } from 'src/utils'
 
+import { QrCodeModal } from './qr-code-modal'
 import {
   Address,
   DateAndTime,
@@ -32,10 +42,35 @@ import {
 } from './styles'
 
 export const TicketScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false)
+
+  const openModal = () => {
+    setModalVisible(true)
+  }
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
+  const ScreenHeader = useCallback(
+    ({ navigation }: NativeStackHeaderProps) => (
+      <Header
+        onBack={navigation.goBack}
+        title={t('tickets.item.title')}
+        EndComponent={
+          <TouchableOpacity onPress={openModal}>
+            <QrCodeIcon />
+          </TouchableOpacity>
+        }
+      />
+    ),
+    [],
+  )
+
   const paddingBottom = usePaddingBottom({ extraOffset: 8 })
   const { red_dark } = useTheme()
   const [refreshing, setRefreshing] = useState(false)
-  const { replace } = useNavigation()
+  const { replace, setOptions } = useNavigation()
   const [isRemoving, setIsRemoving] = useState(false)
   const { visible, open, close } = useToggle()
 
@@ -72,6 +107,12 @@ export const TicketScreen = () => {
       },
     })
   }
+
+  useLayoutEffect(() => {
+    setOptions({
+      header: ScreenHeader,
+    })
+  }, [ScreenHeader, setOptions])
 
   if (isLoading || !ticket) {
     return (
@@ -127,6 +168,11 @@ export const TicketScreen = () => {
         acceptColor={red_dark}
         acceptText={t('tickets.item.labelShort')}
         onAccept={deleteHandler}
+      />
+      <QrCodeModal
+        isVisible={modalVisible}
+        close={closeModal}
+        ticket={ticket}
       />
     </Wrapper>
   )

@@ -79,6 +79,9 @@ export const ru = {
       date: '{date} в {time}',
       labelShort: 'Отменить',
       question: 'Вы уверены что хотите отменить билет?',
+      qrCode: {
+        title: 'Покажите этот qr-code на стойке регистрации',
+      },
     },
   },
   months: {
