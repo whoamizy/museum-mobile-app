@@ -83,7 +83,8 @@ export const Month = () => {
     const item = info?.viewableItems?.[0]
     const month = item?.item?.month
     setDaysCount(item?.item.data.length)
-    setCurrentMonth(month)
+    const usefullMonth = month === 12 ? 0 : month
+    setCurrentMonth(usefullMonth)
   }, [])
 
   const viewabilityConfigCallbackPairs = useRef([

@@ -33,7 +33,7 @@ export const TabBar = () => {
             tabBarLabel: title,
             tabBarLabelStyle: {
               fontFamily: theme.font.montserrat500,
-              fontSize: 12,
+              fontSize: 10,
               paddingBottom: 3,
             },
           }}
